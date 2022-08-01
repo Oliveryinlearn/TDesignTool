@@ -4,8 +4,11 @@ export interface config {
 declare class TDesignTool {
     private static _TDesignTool;
     private constructor();
-    _start(config?: config): void;
     static init(config?: config): TDesignTool;
     private static _initEnv;
+    _start(config?: config): void;
+    private _handleKeyDown;
+    private _handleKeyUp;
+    private _handleMousemove;
 }
 export default TDesignTool;

@@ -1,89 +1,3 @@
-// // rollup.config.js
-// // import { terser } from "rollup-plugin-terser";
-// import resolve, { nodeResolve } from "@rollup/plugin-node-resolve";
-// import typescript from "@rollup/plugin-typescript";
-// import sourceMaps from "rollup-plugin-sourcemaps";
-// import commonjs from "@rollup/plugin-commonjs";
-// // import serve from "rollup-plugin-serve";
-
-// export default {
-//     input: "./src/index.ts",
-//     plugins: [
-//         typescript({
-//             exclude: "node_modules/**",
-//             typescript: require("typescript"),
-//         }),
-//         sourceMaps(),
-//         // serve({
-//         //     port: 8888,
-//         //     contentBase: "", // 表示起的服务是在根目录下
-//         //     openPage: "/example/index.html", // 打开的是哪个文件
-//         //     open: true, // 默认打开浏览器
-//         // }),
-//         commonjs(),
-//     ],
-//     // cjs: module.exports
-//     // esm: export default
-//     output: [
-//         {
-//             format: "cjs",
-//             file: `dist/TDesignTool.cjs.js`,
-//             sourcemap: false, // ts中的sourcemap也得变为true
-//         },
-//         {
-//             format: "esm",
-//             file: `dist/TDesignTool.esm.js`,
-//             sourcemap: false,
-//         },
-//     ],
-// };
-// // export default [
-// //     // {
-// //     //     input: "./src/index.ts",
-// //     //     output: {
-// //     //         format: "cjs",
-// //     //         file: `dist/${setting.packageName}`,
-// //     //     },
-// //     //     plugins: [nodeResolve(), commonjs(), typescript()],
-// //     // },
-// //     {
-// //         input: "./src/index.ts",
-// //         output: {
-// //             format: "esm",
-// //             file: `dist/TDesignTool.esm.js`,
-// //         },
-// //         plugins: [
-// //             nodeResolve({
-// //                 extensions: [".js", ".ts"],
-// //             }),
-// //             // commonjs(),
-// //             typescript(),
-// //         ],
-// //     },
-// // ];
-
-// // 引入node中的核心模块，文件处理以及路径处理
-// // import fs from "fs";
-// // import path from "path";
-// // const setting = require("./setting");
-
-// // // 构建打包
-// // const buildTsUtils = require("./build");
-// // import buildTsUtils from "./build/index";
-
-// // export default {
-// //   input: "./src/index.js",
-// //   output: {
-// //     file: `${setting.tsUtils}/${setting.packageName}`,
-// //     format: "cjs",
-// //   },
-// //   plugins: [
-// //     terser({ compress: { drop_console: true } }),
-// //     // buildTsUtils({
-// //     //   path: "./dist",
-// //     // }),
-// //   ],
-// // };
 import path from "path";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -101,21 +15,17 @@ const config = {
     output: [
         // commonjs
         {
-            // package.json 配置的 main 属性
             file: pkg.main,
             format: "cjs",
         },
         // es module
         {
-            // package.json 配置的 module 属性
             file: pkg.module,
             format: "es",
         },
         // umd
         {
-            // umd 导出文件的全局变量
             name,
-            // package.json 配置的 umd 属性
             file: pkg.umd,
             format: "umd",
         },

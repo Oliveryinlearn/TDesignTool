@@ -48,8 +48,22 @@ var TDesignTool = /*#__PURE__*/function () {
   _createClass(TDesignTool, [{
     key: "_start",
     value: function _start(config) {
-      console.log("--- 启动 ---");
+      window.addEventListener("keydown", this._handleKeyDown.bind(this));
+      window.addEventListener("keyup", this._handleKeyUp.bind(this));
+      window.addEventListener("mousemove", this._handleMousemove.bind(this));
+      window.onblur = this._handleKeyUp.bind(this);
     }
+  }, {
+    key: "_handleKeyDown",
+    value: function _handleKeyDown(event) {
+      console.log(event.key.toLocaleLowerCase());
+    }
+  }, {
+    key: "_handleKeyUp",
+    value: function _handleKeyUp() {}
+  }, {
+    key: "_handleMousemove",
+    value: function _handleMousemove() {}
   }], [{
     key: "init",
     value: function init(config) {
